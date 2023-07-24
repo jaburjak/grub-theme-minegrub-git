@@ -1,0 +1,44 @@
+= Minegrub pacman package
+
+This repository contains the `PKGBUILD` for building and installing
+https://github.com/Lxtharia/minegrub-theme[Minegrub] on Arch Linux.
+
+Minegrub is “a GRUB theme in the style of Minecraft”.
+
+image::https://raw.githubusercontent.com/Lxtharia/minegrub-theme/main/assets/preview_minegrub.png[]
+
+== Installation
+
+Download the `PKGBUILD` file from this repository and inspect its contents.
+Never run random scripts and executables you find on the internet.
+
+Then, make and install the package:
+
+----
+$ makepkg
+# pacman -U grub-theme-minegrub-git-*-any.pkg.tar.zst
+----
+
+To actually use the theme in GRUB, edit and regenerate its configuration:
+
+.`/etc/default/grub`
+----
+GRUB_THEME=/usr/share/grub/themes/minegrub/theme.txt
+----
+
+----
+# grub-mkconfig -o /boot/grub/grub.cfg
+----
+
+To enable automatic package count and splash text updates, enable the
+`minegrub-update` systemd service:
+
+----
+# systemctl enable --now minegrub-update.service
+----
+
+== Additional information
+
+For more information about the Minegrub theme and its usage, refer to the
+upstream repository: +
+https://github.com/Lxtharia/minegrub-theme

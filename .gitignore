@@ -1,0 +1,4 @@
+grub-theme-minegrub-git
+*.pkg.tar.zst
+pkg
+src
